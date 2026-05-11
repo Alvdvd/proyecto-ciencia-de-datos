@@ -10,10 +10,10 @@ Este proyecto de ciencia de datos tiene como objetivo analizar las carreras prof
 - Juan Cruz
 
 ## Dataset
-Fuente: Datos.gov.co
-Nombre Dataset: Migración colombianos a Canadá, Estados Unidos, Sudáfrica y Australia
-Link: datos.gov.co/Estad-sticas-Nacionales/Migraci-n-colombianos-a-Canad-Estados-Unidos-Sud-f/j8zm-8ebe
-Variables: 
+- Fuente: Datos.gov.co
+- Nombre Dataset: Migración colombianos a Canadá, Estados Unidos, Sudáfrica y Australia
+- Link: datos.gov.co/Estad-sticas-Nacionales/Migraci-n-colombianos-a-Canad-Estados-Unidos-Sud-f/j8zm-8ebe
+- Variables: 
 
 ## Tecnologias
 - Python · Visual Studio Code · StreamLit · Git · GitHub 
