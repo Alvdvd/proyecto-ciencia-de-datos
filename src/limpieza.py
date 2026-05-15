@@ -9,6 +9,7 @@ print(df.head())
 print("------------------------------")
 
 # Ver información general
+print("Información General")
 print(df.info())
 print("------------------------------")
 
@@ -19,10 +20,28 @@ print("------------------------------")
 
 # Ver datos nulos
 print("Datos Nulos: ")
-print(df.isnull().sum())
+print(df.isnull().sum()) # Datos nulos = 35
 print("------------------------------")
 
 # Ver datos Duplicados
 print("Datos Duplicados: ")
-print(df.duplicated().sum())
+print(df.duplicated().sum()) # Duplicados = 0
+print("------------------------------")
+# No hay Datos Duplicados
+
+# Eliminamos columnas Inutiles
+columnas_eliminar = [
+    "Código ISO país",
+    "Localización",
+    "Fecha de Registro"
+]
+
+df = df.drop(columns=columnas_eliminar)
+
+print("Verificamos que si eliminamos las columnas inutiles")
+print(df.columns)
+print("------------------------------")
+
+# Verificamos dimensiones
+print(df.shape)
 print("------------------------------")
