@@ -53,3 +53,7 @@ Compararemos 3 modelos distintos:
 - Nivel Académico
 - Sexo
 - Estado civil
+
+## Cambios:
+
+- Se filtraron registros de personas menores de edad debido a que el análisis se centra en perfiles académicos y profesionales asociados a movilidad internacional.

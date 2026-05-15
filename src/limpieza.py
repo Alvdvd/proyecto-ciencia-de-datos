@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 ruta = "data/Connacionales_inscritos_en_el_Registro_Ciudadano_en_Línea_20260514.xlsx"
 
@@ -43,5 +44,52 @@ print(df.columns)
 print("------------------------------")
 
 # Verificamos dimensiones
+print("Antes de Limpieza")
 print(df.shape)
 print("------------------------------")
+
+# Filtrar edades validas 
+df = df[
+    (df["Edad (años)"] >= 18) &
+    (df["Edad (años)"] <= 100)
+    ]
+
+# Revision de dimensiones despues de limpieza logica
+print("Despues de limpieza: ", df.shape)
+
+
+print("------------------------------")
+print(df["Nivel Académico"].unique())
+print("------------------------------")
+print(df["Sexo"].unique())
+print("------------------------------")
+print(df["Estado civil"].unique())
+print("------------------------------")
+print(df["Área Conocimiento"].unique())
+print("------------------------------")
+
+#Verificamos datos de edad
+plt.hist(df["Edad (años)"], bins=20)
+
+plt.title("Distribución de edades")
+plt.xlabel("Edad")
+plt.ylabel("Frecuencia")
+
+plt.show()
+
+
+# Aplicamos variables
+X = df[
+    [
+        "País",
+        "Edad (años)",
+        "Nivel Académico",
+        "Sexo",
+        "Estado civil"
+    ]
+]
+
+Y = df["Área Conocimiento"]
+
+# Verificamos balance de clases
+print(df["Área Conocimiento"].value_counts())
