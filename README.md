@@ -57,3 +57,4 @@ Compararemos 3 modelos distintos:
 ## Cambios:
 
 - Se filtraron registros de personas menores de edad debido a que el análisis se centra en perfiles académicos y profesionales asociados a movilidad internacional.
+- Debido al desbalance de clases del dataset, además de accuracy se utilizaron métricas como precision, recall y F1-score para evaluar el desempeño real del modelo.

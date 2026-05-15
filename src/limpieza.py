@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 ruta = "data/Connacionales_inscritos_en_el_Registro_Ciudadano_en_Línea_20260514.xlsx"
 
@@ -77,6 +78,24 @@ plt.ylabel("Frecuencia")
 
 plt.show()
 
+# Verificamos balance de clases
+print(df["Área Conocimiento"].value_counts())
+print("------------------------------")
+
+# existen demasiados datos clasificados como ninguno, no indica y no aplica
+categorias_invalidas = [
+    "NINGUNA",
+    "NO INDICA",
+    "(NO REGISTRA)"
+]
+
+df = df[~df["Área Conocimiento"].isin(categorias_invalidas)]
+
+# Verificamos balance de clases sin datos que no contengan nada
+print(df["Área Conocimiento"].value_counts())
+print("------------------------------")
+
+# Debido al desbalance de clases del dataset, además de accuracy se utilizaron métricas como precision, recall y F1-score para evaluar el desempeño real del modelo.
 
 # Aplicamos variables
 X = df[
@@ -91,5 +110,8 @@ X = df[
 
 Y = df["Área Conocimiento"]
 
-# Verificamos balance de clases
-print(df["Área Conocimiento"].value_counts())
+# Aplicamos one hot encoding
+X = pd.get_dummies(X)
+
+print(X.shape)
+print("------------------------------")
