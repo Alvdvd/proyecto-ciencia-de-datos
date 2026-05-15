@@ -1,0 +1,24 @@
+# --- DATOS PESADOS ---
+# Ignorar el archivo específico que te dio error
+data/Connacionales_inscritos_en_el_Registro_Ciudadano_en_Línea_20260514.xlsx
+
+# Ignorar todos los archivos de Excel y CSV (El dataset en XLSX pesa 111 MB y el CSV pesa 341 MB) ¡Pesan demasiado!
+data/
+*.xlsx
+*.csv
+*.parquet
+
+# --- PYTHON ---
+# Ignorar carpetas de entornos virtuales
+env/
+venv/
+.env
+
+# Ignorar archivos temporales de Python
+__pycache__/
+*.pyc
+
+# --- SISTEMA ---
+# Ignorar archivos temporales de Windows/Mac
+.DS_Store
+Thumbs.db
