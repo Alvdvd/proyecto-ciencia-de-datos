@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este proyecto de ciencia de datos tiene como objetivo Desarrollar modelos de machine learning capaces de identificar las áreas profesionales con mayor proyección internacional o con mayor presencia migratoria internacional para los colombianos, utilizando variables sociodemográficas y académicas provenientes de registros migratorios.
+Este proyecto de ciencia de datos tiene como objetivo analizar patrones de movilidad internacional de colombianos registrados en el exterior, identificando las áreas de conocimiento con mayor presencia migratoria y explorando relaciones entre variables sociodemográficas, académicas y migratorias mediante técnicas de análisis de datos y machine learning.
 
 ## Integrantes
 - Nelson Garnica
@@ -13,48 +13,80 @@ Este proyecto de ciencia de datos tiene como objetivo Desarrollar modelos de mac
 - Fuente: Datos.gov.co
 - Nombre Dataset: Migración colombianos a Canadá, Estados Unidos, Sudáfrica y Australia
 - Link: datos.gov.co/Estad-sticas-Nacionales/Migraci-n-colombianos-a-Canad-Estados-Unidos-Sud-f/j8zm-8ebe
-- Variables Categoricas: país, nivel academico, área de conocimiento, sexo. 
-- Variables Numericas: edad, año.
+
+### Variables categóricas
+- País
+- Nivel académico
+- Área de conocimiento
+- Sexo
+- Estado civil
+- Ciudad de residencia
+- Pertenencia étnica
+
+### Variables numéricas
+- Edad
+- Cantidad de personas
 
 ### Importante
-para cargar el dataset en tu maquina localmente, descarga el dataset del link completo y guardalo en una sub carpeta dentro del proyecto llamada: "data", este archivo no se puede subir a github debido a que **pesa mas de lo permitido**
+Para cargar el dataset localmente, descarga el archivo desde el enlace oficial y guárdalo dentro de una subcarpeta llamada `data/`. El archivo no se encuentra en el repositorio debido a restricciones de tamaño en GitHub.
 
-## Tecnologias
-- Python · Visual Studio Code · StreamLit · Git · GitHub 
+## Tecnologías
+- Python
+- Pandas
+- Scikit-Learn
+- Matplotlib
+- Jupyter Notebook
+- Visual Studio Code
+- Git
+- GitHub
 
+---
 
-## Modelo elegido: Random Forest
-### ¿Por que?
+# Enfoque metodológico
 
-Elegir Random Forest es la decisión mas estrategica por que actua como un comite que equilibra precisión y versatibilidad debido a que el Dataset maneja Variables Categoricas y numericas, ademas de relaciones no lienales, puede existir ruido en el dataset por su gran tamaño (+ 1'000.000 de datos) y puede haber variables atípicas a demas de manejar mejor las relaciones complejas, este modelo ofrece la potencia necesaria para resolver el problema sin sacrificar claridad ni entendimiento.
+Inicialmente el proyecto fue planteado como un problema de clasificación multiclase orientado a predecir el área de conocimiento de los migrantes colombianos a partir de variables sociodemográficas y académicas.
 
-### por que no otros
+Sin embargo, durante el desarrollo y entrenamiento de modelos como Regresión Logística, Árbol de Decisión y Random Forest, se identificó una baja capacidad predictiva debido al alto solapamiento entre categorías, el desbalance de clases y la limitada relación entre las variables disponibles y el objetivo planteado.
 
-A pesar de que existen otras herramientas populares en la ciencia de datos, para este proyecto en particular presentan limitaciones que las dejan fuera de juego. Por un lado, opciones como el Árbol de Decisión o la Regresión Logística pecan de ser demasiado simples; el primero tiende a memorizar los datos en lugar de aprender patrones generales (overfitting), mientras que la segunda asume que todo se puede separar con una línea recta, ignorando las relaciones complejas que suelen tener variables como el país o el nivel académico.
+A partir de estos resultados, el enfoque del proyecto fue replanteado hacia un análisis de patrones migratorios y tendencias académicas, utilizando los modelos de machine learning como herramientas complementarias de exploración y comparación.
 
-Por otro lado, la Regresión Lineal queda descartada por una cuestión de concepto fundamental: está diseñada para predecir valores numéricos continuos (como el precio de una casa) y no para clasificar categorías. Finalmente, aunque algoritmos como XGBoost ofrecen un rendimiento técnico superior, su complejidad los convierte en una "caja negra" difícil de calibrar y explicar, sin embargo no se descarta que sea una opcion mas viable que Random Forest.
+---
 
-## Comparación
+# Modelos evaluados
 
-Compararemos 3 modelos distintos:
-1. Árbol de Decisión
-2. Regresión Logistica
+Se compararán distintos modelos de clasificación para analizar el comportamiento del dataset:
+
+1. Regresión Logística
+2. Árbol de Decisión
 3. Random Forest
 4. XGBoost
 
-## Variable Objetivo
+## ¿Por qué Random Forest?
 
-- Area_Conocimiento
+Random Forest fue seleccionado como uno de los modelos principales debido a su capacidad para manejar variables categóricas y numéricas, reducir overfitting y capturar relaciones no lineales presentes en datasets complejos y desbalanceados.
 
-## Variables predictorias
+Además, permite obtener resultados interpretables y comparables frente a otros modelos más simples o más complejos.
 
+---
+
+# Variables utilizadas
+
+## Variable analizada inicialmente
+- Área de conocimiento
+
+## Variables predictoras
 - País
 - Edad
-- Nivel Académico
+- Nivel académico
 - Sexo
 - Estado civil
 
-## Cambios:
+---
 
-- Se filtraron registros de personas menores de edad debido a que el análisis se centra en perfiles académicos y profesionales asociados a movilidad internacional.
-- Debido al desbalance de clases del dataset, además de accuracy se utilizaron métricas como precision, recall y F1-score para evaluar el desempeño real del modelo.
+# Cambios y decisiones metodológicas
+
+- Se eliminaron registros con edades inconsistentes o fuera del rango de análisis definido.
+- Se filtraron registros de personas menores de edad debido al enfoque académico y profesional del proyecto.
+- Se eliminaron categorías inválidas como “NINGUNA”, “NO INDICA” y “(NO REGISTRA)” en el área de conocimiento.
+- Debido al desbalance de clases del dataset, además de accuracy se utilizaron métricas como precision, recall y F1-score.
+- Los resultados obtenidos evidenciaron limitaciones predictivas importantes, lo que llevó al replanteamiento metodológico del proyecto hacia análisis migratorio y tendencias académicas.
