@@ -44,41 +44,11 @@ print("Verificamos que si eliminamos las columnas inutiles")
 print(df.columns)
 print("------------------------------")
 
-# Verificamos dimensiones
-print("Antes de Limpieza")
+# Verificamos dimensiones Antes de Limpieza
 print(df.shape)
 print("------------------------------")
 
-# Filtrar edades validas 
-df = df[
-    (df["Edad (años)"] >= 18) &
-    (df["Edad (años)"] <= 100)
-    ]
-
-# Revision de dimensiones despues de limpieza logica
-print("Despues de limpieza: ", df.shape)
-
-
-print("------------------------------")
-print(df["Nivel Académico"].unique())
-print("------------------------------")
-print(df["Sexo"].unique())
-print("------------------------------")
-print(df["Estado civil"].unique())
-print("------------------------------")
-print(df["Área Conocimiento"].unique())
-print("------------------------------")
-
-#Verificamos datos de edad
-plt.hist(df["Edad (años)"], bins=20)
-
-plt.title("Distribución de edades")
-plt.xlabel("Edad")
-plt.ylabel("Frecuencia")
-
-plt.show()
-
-# Verificamos balance de clases
+# Verificamos balance de la variable
 print(df["Área Conocimiento"].value_counts())
 print("------------------------------")
 
@@ -91,11 +61,40 @@ categorias_invalidas = [
 
 df = df[~df["Área Conocimiento"].isin(categorias_invalidas)]
 
-# Verificamos balance de clases sin datos que no contengan nada
+# Verificamos de nuevo balance de clases sin datos que no contengan nada
 print(df["Área Conocimiento"].value_counts())
+print("------------------------------\n")
+print("Despues de limpieza: ", df.shape)
+
+# Filtrar edades validas 
+df = df[
+    (df["Edad (años)"] >= 18) &
+    (df["Edad (años)"] <= 100)
+    ]
+
+#Verificamos datos de edad
+plt.hist(df["Edad (años)"], bins=20)
+
+plt.title("Distribución de edades")
+plt.xlabel("Edad")
+plt.ylabel("Frecuencia")
+
+plt.show()
+
+# Revision de dimensiones despues de limpieza logica para verificar que no existen variables de tipo [Maestia, MAESTRIA, maestria]
+
+print("------------------------------")
+print(df["Nivel Académico"].unique())
+print("------------------------------")
+print(df["Sexo"].unique())
+print("------------------------------")
+print(df["Estado civil"].unique())
+print("------------------------------")
+print(df["Área Conocimiento"].unique())
 print("------------------------------")
 
-# Debido al desbalance de clases del dataset, además de accuracy se utilizaron métricas como precision, recall y F1-score para evaluar el desempeño real del modelo.
+
+# Debido al desbalance de clases del dataset, además de accuracy se utilizaran métricas como precision, recall y F1-score para evaluar el desempeño real del modelo.
 
 # Aplicamos variables
 X = df[
@@ -112,6 +111,17 @@ Y = df["Área Conocimiento"]
 
 # Aplicamos one hot encoding
 X = pd.get_dummies(X)
-
+print("------------------------------")
 print(X.shape)
 print("------------------------------")
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    Y,
+    test_size=0.2,
+    random_state=42
+)
+
+#verificamos dimensiones
+print(X_train.shape)
+print(X_test.shape)
